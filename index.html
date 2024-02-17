@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Video Player</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="commentsDisplay" class="comments-display"></div>
+    <video id="videoPlayer" controls class="video-player"></video>
+    <div id="commentForm" class="comment-form" style="display:none;">
+        <textarea id="commentText" placeholder="Enter your comment..."></textarea>
+        <button id="saveComment">Save Comment</button>
+    </div>
+    <button id="exportComments" class="export-comments">Export Comments</button>
+
+    <script src="js/global.js"></script>
+    <script type="module" src="js/CommentsManager.js"></script>
+    <script type="module">
+        import { CommentsManager } from './js/CommentsManager.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            const videoPlayer = document.getElementById('videoPlayer');
+            const commentsDisplay = document.getElementById('commentsDisplay');
+            new CommentsManager(videoPlayer, commentsDisplay);
+        });
+    </script>
+</body>
+</html>
